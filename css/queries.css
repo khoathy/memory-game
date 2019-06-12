@@ -3,6 +3,10 @@
 	html {
 		font-size: 56.25%;
 	}
+
+	.deck {
+		padding: 3rem;
+	}
 }
 
 /* Tablet Portrait max-width: 900px */
@@ -10,23 +14,62 @@
 	html {
 		font-size: 50%;
 	}
-
 }
 
 /*Phones max-width: 600px */
 @media screen and (max-width: 37.5em) {
+	.header {
+		padding: 1rem;
+	}
+
+	.info-panel {
+		width: 95%;
+	}
+
+	.stars,
+	.moves,
+	.timer {
+		margin: 0;
+		padding: 0;
+		display: inline-block;
+		margin-right: 1.5rem;
+	}
+
+	.deck {
+		padding: 0.5rem;
+	}
+
+	.card {
+		height: 7rem;
+		width: 7rem;
+		box-shadow: 2px 1px 1rem 0 rgba(37, 89, 131, 0.4);
+	}
+
+	.card.show,
+	.card.match {
+    	font-size: 5rem;
+	}
+	
+
 	
 }
 
 /*Small Phones max-width: 480px */
 @media screen and (max-width: 30em) {
-	
+	.card {
+		height: 6rem;
+		width: 7rem;
+	}
 }
 
-/*Large Desktop */
+/*Large Desktop: 1800px */
 @media screen and (min-width: 112.5em) {
 	html {
 		font-size: 75%;
+	}
+
+	.deck {
+		padding: 4rem 10%;
 	}
 
 	
