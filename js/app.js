@@ -1,8 +1,33 @@
-/*
- * Create a list that holds all of your cards
- */
+/* Variable declarations */
+
+// Create a list that holds all of the cards 
+let cardList = [
+    'icofont-fish-5',
+    'icofont-cherry',
+    'icofont-birthday-cake',
+    'icofont-umbrella',
+    'icofont-leaf',
+    'icofont-heart',
+    'icofont-apple',
+    'icofont-fire-truck',
+    'icofont-fish-5',
+    'icofont-cherry',
+    'icofont-birthday-cake',
+    'icofont-umbrella',
+    'icofont-leaf',
+    'icofont-heart',
+    'icofont-apple',
+    'icofont-fire-truck'
+  ];
+
+// Get DOM elements
+let deck = document.querySelector('.deck');
+const movesCount = document.querySelector('.moves');
+const timer = document.querySelector('.timer');
 
 
+
+  
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -10,7 +35,7 @@
  *   - add each card's HTML to the page
  */
 
-// Shuffle function from http://stackoverflow.com/a/2450976
+// Shuffle function given by Udacity (source: http://stackoverflow.com/a/2450976)
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
 
@@ -24,6 +49,29 @@ function shuffle(array) {
 
     return array;
 }
+
+function createCard(str){
+    //create li.card 
+    let liElm = document.createElement('li');
+    liElm.classList.add('card');
+    deck.appendChild(liElm);
+    //create i.name
+    let icon = document.createElement('i');
+    icon.classList.add(str);
+    liElm.appendChild(icon);
+};
+
+(function createCards(){
+    shuffle(cardList);
+    cardList.forEach(function(str){
+        createCard(str);
+    });
+})();
+
+
+
+
+
 
 
 /*

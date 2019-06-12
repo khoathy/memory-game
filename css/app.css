@@ -92,20 +92,22 @@ h1 {
 .deck {
     height: 100%;
     width: 100%;
-    background: linear-gradient(165deg, #2cc6bb 10%, #827ecd 100%);
+    background: linear-gradient(165deg, #2cbcc6 25%, #7e79da 100%);
     padding: 3rem 5%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-content: space-around;
     flex-grow: 1;
+
+    perspective: 150rem;
 }
 
 .card {
     height: 15rem;
     width: 15rem;
     margin: 1rem 2rem;
-    background: linear-gradient(180deg, #31e6d9 0%, #31e6d9 25%,#19c7f7 25%, #19c7f7 75%, #889df0 75%, #9490ed 100%);
+    background: linear-gradient(180deg, #21dece 0%, #21dece 50%,#19c7f7 51%, #19c7f7 80%, #889df0 81%, #9490ed 100%);
     color: #fff;
     font-size: 0;
     border-radius: 8px;
@@ -113,7 +115,7 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 4px 2px 1.5rem 0 rgba(37, 89, 131, 0.4);
+    box-shadow: 4px 2px 1rem 0 rgba(37, 89, 131, 0.4);
 }
 
 .card.open {
