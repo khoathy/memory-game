@@ -1,0 +1,138 @@
+html {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100vh;
+}
+
+html {
+    box-sizing: border-box;
+	font-size: 62.5%;
+}
+
+body {
+    background: #fff;
+    font-family: 'Nunito', sans-serif;
+	font-weight: 300;
+	font-size: 1.5rem;
+	letter-spacing: 0.03rem;
+	line-height: 1.5;
+	color: #232335;
+	text-rendering: optimizeLegibility;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.header {
+    padding: 2rem;
+}
+
+h1 {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    font-size: 3.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: #02a99b;
+}
+
+/* Styles for Section Cards */
+
+.section-card {
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(150deg, #08d1c4 0%, #827ecd 100%);
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.deck {
+    height: 100%;
+    max-width: 120rem;
+    padding: 2rem 3rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.deck .card {
+    height: 15rem;
+    width: 15rem;
+    margin: 0 2rem;
+    background: linear-gradient(180deg, #31e6d9 0%, #31e6d9 25%,#19c7f7 25%, #19c7f7 75%, #889df0 75%, #9490ed 100%);
+    color: #fff;
+    font-size: 0;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 4px 2px 2rem 0 rgba(37, 89, 131, 0.4);
+}
+
+.deck .card.open {
+    transform: rotateY(0);
+    background: #19c7f7;
+    cursor: default;
+}
+
+.deck .card.show {
+    font-size: 6rem;
+}
+
+.deck .card.match {
+    cursor: default;
+    background: #02d7c5;
+    font-size: 6rem;
+}
+
+/* Styles for Section Info */
+
+.section-info {
+    text-align: left;
+    width: 60rem;
+    margin-bottom: 2rem;
+}
+
+.section-info .stars,
+.section-info .moves,
+.section-info .timer {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    margin: 0 3rem 0 0;
+}
+
+.section-info .stars li {
+    list-style: none;
+    display: inline-block;
+}
+
+.section-info .restart {
+    float: right;
+    cursor: pointer;
+}

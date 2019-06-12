@@ -1,0 +1,33 @@
+/* Tablet Landscape max-width: 1200px */
+@media screen and (max-width: 75em) {
+	html {
+		font-size: 56.25%;
+	}
+}
+
+/* Tablet Portrait max-width: 900px */
+@media screen and (max-width: 56.25em) {
+	html {
+		font-size: 50%;
+	}
+
+}
+
+/*Phones max-width: 600px */
+@media screen and (max-width: 37.5em) {
+	
+}
+
+/*Small Phones max-width: 480px */
+@media screen and (max-width: 30em) {
+	
+}
+
+/*Large Desktop */
+@media screen and (min-width: 112.5em) {
+	html {
+		font-size: 75%;
+	}
+
+	
+}
