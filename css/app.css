@@ -92,22 +92,21 @@ h1 {
 .deck {
     height: 100%;
     width: 100%;
-    background: linear-gradient(165deg, #2cbcc6 25%, #7e79da 100%);
+    background: linear-gradient(165deg, #33b9c2 20%, #7f7bd7 100%);
     padding: 3rem 5%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-content: space-around;
     flex-grow: 1;
-
-    perspective: 150rem;
+    perspective: 400rem;
 }
 
 .card {
     height: 15rem;
     width: 15rem;
     margin: 1rem 2rem;
-    background: linear-gradient(180deg, #21dece 0%, #21dece 50%,#19c7f7 51%, #19c7f7 80%, #889df0 81%, #9490ed 100%);
+    background: linear-gradient(135deg, #35eedf 0%, #35eedf 60%,#19c7f7 60%, #19c7f7 85%, #9490ed 85%, #9490ed 100%);
     color: #fff;
     font-size: 0;
     border-radius: 8px;
@@ -116,10 +115,18 @@ h1 {
     justify-content: center;
     align-items: center;
     box-shadow: 4px 2px 1rem 0 rgba(37, 89, 131, 0.4);
+    transform-style: preserve-3d;
+    transform: rotateY(0);
+    transition: font-size 0.2s, transform 0.6s cubic-bezier(0,.78,.37,1.21), background 0.5s;
+    
+}
+
+.card i {
+    transform: rotateY(180deg);
 }
 
 .card.open {
-    transform: rotateY(0);
+    transform: rotateY(180deg);
     background: #19c7f7;
     cursor: default;
 }
@@ -131,6 +138,14 @@ h1 {
 
 .card.match {
     cursor: default;
-    background: #21dece;
+    background: #3ae1d3;
 }
-
+/* 
+@keyframes flip {
+    /* 0% {
+        transform: rotateY(0);
+    } */
+    /* 100% {
+        transform: rotateY(180deg);
+    }
+} */ */

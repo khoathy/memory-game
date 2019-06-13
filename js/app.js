@@ -26,7 +26,6 @@ const movesCount = document.querySelector('.moves');
 const timer = document.querySelector('.timer');
 
 
-
   
 /*
  * Display the cards on the page
@@ -50,25 +49,33 @@ function shuffle(array) {
     return array;
 }
 
-function createCard(str){
+function createCard(cardName){
     //create li.card 
     let liElm = document.createElement('li');
     liElm.classList.add('card');
+    liElm.setAttribute('data-card',cardName)
     deck.appendChild(liElm);
     //create i.name
     let icon = document.createElement('i');
-    icon.classList.add(str);
+    icon.classList.add(cardName);
     liElm.appendChild(icon);
 };
 
 (function createCards(){
     shuffle(cardList);
-    cardList.forEach(function(str){
-        createCard(str);
+    cardList.forEach(function(cardName){
+        createCard(cardName);
     });
 })();
 
 
+let cards = document.querySelectorAll('.card');
+    cards.forEach(function(card){
+        card.addEventListener('click', function(){
+            card.classList.add('open', 'show');
+            console.log('ho');
+        })
+})
 
 
 
