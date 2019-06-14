@@ -24,20 +24,22 @@ let cardList = [
 let deck = document.querySelector('.deck');
 const movesCount = document.querySelector('.moves');
 const timer = document.querySelector('.timer');
+let openCards = [];
+let firstCard, secondCard;
+let hasFlipped = false;
+let moveStr = document.getElementById('move-number');
+let moveWord = document.getElementById('move-word');
+let move = 0;
 
 
   
 /*
  * Display the cards on the page
- *   - shuffle the list of cards using the provided "shuffle" method below
- *   - loop through each card and create its HTML
- *   - add each card's HTML to the page
  */
 
 // Shuffle function given by Udacity (source: http://stackoverflow.com/a/2450976)
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
-
     while (currentIndex !== 0) {
         randomIndex = Math.floor(Math.random() * currentIndex);
         currentIndex -= 1;
@@ -45,10 +47,10 @@ function shuffle(array) {
         array[currentIndex] = array[randomIndex];
         array[randomIndex] = temporaryValue;
     }
-
     return array;
 }
 
+// Create and add each card's HTML to the page
 function createCard(cardName){
     //create li.card 
     let liElm = document.createElement('li');
@@ -61,7 +63,8 @@ function createCard(cardName){
     liElm.appendChild(icon);
 };
 
-(function createCards(){
+//Display random cards on the page
+(function displayCards(){
     shuffle(cardList);
     cardList.forEach(function(cardName){
         createCard(cardName);
@@ -69,16 +72,71 @@ function createCard(cardName){
 })();
 
 
-let cards = document.querySelectorAll('.card');
-    cards.forEach(function(card){
-        card.addEventListener('click', function(){
-            card.classList.add('open', 'show');
-            console.log('ho');
-        })
+/*
+ * Game logics
+ */
+
+ //flip and show the icon of the card
+function flipCards(){
+    this.classList.add('open','show');
+    openCards.push(this);
+    if (!hasFlipped) {
+        hasFlipped = true;
+        firstCard = this;
+    console.log("open"+ openCards.length);
+    } else {
+        hasFlipped = false;
+        secondCard = this;  
+        checkMatch();
+        updateMoves();
+    console.log("2"+ secondCard + secondCard.dataset.card);
+    }
+    
+}
+
+function updateMoves(){
+    move++;
+    moveStr.innerText = move; 
+    if(move == 1) {
+        moveWord.innerText = " Move";
+    } else {
+        moveWord.innerText = " Moves";
+    } 
+}
+
+// function lockDeck() {
+//     if (openCards.length >= 2) return;
+//     console.log('lock');
+// }
+
+
+function unflipCards(){
+    setTimeout(() => {
+        firstCard.classList.remove('open','show');    
+        secondCard.classList.remove('open','show');   
+     }, 1200);
+     
+     console.log("time");
+}
+
+// lock the cards that has matched in the open position
+function lockCards(){
+    firstCard.removeEventListener('click',flipCards);
+    secondCard.removeEventListener('click',flipCards);
+}
+
+//check if cards match 
+function checkMatch(){
+    let match = firstCard.dataset.card === secondCard.dataset.card;
+    console.log('match?' + match);
+    match ?  lockCards() : unflipCards();
+}
+
+//set up the event listener for a card if a card is clicked:
+let allCards = document.querySelectorAll('.card');
+allCards.forEach(function(card){
+    card.addEventListener('click', flipCards);
 })
-
-
-
 
 
 /*
