@@ -27,9 +27,14 @@ const timer = document.querySelector('.timer');
 let openCards = [];
 let firstCard, secondCard;
 let hasFlipped = false;
+let lockDeck = false;
 let moveStr = document.getElementById('move-number');
 let moveWord = document.getElementById('move-word');
+let restartBtn = document.getElementById('restart-btn');
+let starList = document.getElementById('stars-list');
+let star = document.querySelectorAll('.star');
 let move = 0;
+let grade = 'great';
 
 
   
@@ -64,34 +69,39 @@ function createCard(cardName){
 };
 
 //Display random cards on the page
-(function displayCards(){
+function displayCards(){
     shuffle(cardList);
     cardList.forEach(function(cardName){
         createCard(cardName);
     });
-})();
+};
 
 
 /*
  * Game logics
  */
 
- //flip and show the icon of the card
+ // Game init
+    displayCards();
+    
+
+ // Flip and show the icon of the card
 function flipCards(){
+    if (lockDeck) return;
+    if (this === firstCard) return;
     this.classList.add('open','show');
     openCards.push(this);
     if (!hasFlipped) {
         hasFlipped = true;
         firstCard = this;
-    console.log("open"+ openCards.length);
     } else {
         hasFlipped = false;
         secondCard = this;  
+        // lockDeck = true;
         checkMatch();
         updateMoves();
-    console.log("2"+ secondCard + secondCard.dataset.card);
+        updateGrade();
     }
-    
 }
 
 function updateMoves(){
@@ -104,22 +114,38 @@ function updateMoves(){
     } 
 }
 
-// function lockDeck() {
-//     if (openCards.length >= 2) return;
-//     console.log('lock');
-// }
+function updateGrade(){
+    if (move >= 2) {
+        star[2].classList.add('star-removed');
+        grade = "Average";  
+    }
+    if (move >= 3) {
+        star[1].classList.add('star-removed')
+        grade = "Poor";    
+    }
+      
+    console.log(starList);
+}
+
+
+// 0-10 Moves = Great! 
+// 13-18 Moves = Average 
+// 26+ Moves = Poor...  
+
 
 
 function unflipCards(){
+    lockDeck = true;
+    console.log(lockDeck + 'when unflip');
     setTimeout(() => {
         firstCard.classList.remove('open','show');    
-        secondCard.classList.remove('open','show');   
-     }, 1200);
-     
-     console.log("time");
+        secondCard.classList.remove('open','show'); 
+    //prevent clicking while cards are still open
+        lockDeck = false;  
+    }, 1000);   
 }
 
-// lock the cards that has matched in the open position
+// lock the cards matched in the open position
 function lockCards(){
     firstCard.removeEventListener('click',flipCards);
     secondCard.removeEventListener('click',flipCards);
@@ -132,11 +158,31 @@ function checkMatch(){
     match ?  lockCards() : unflipCards();
 }
 
+//reset first and second card 
+// function resetFirstCard(){
+//     firstCard = null;
+//     secondCard = null;
+//     hasFlipped = false;
+//     lockDeck = false;
+// }
+
+// function restartGame(){
+//     deck.innerHTML = "";
+//     displayCards();
+//     hasFlipped = false;
+//     lockDeck = false;
+//     console.log(hasFlipped,lockDeck,openCards);
+// }
+
 //set up the event listener for a card if a card is clicked:
 let allCards = document.querySelectorAll('.card');
 allCards.forEach(function(card){
     card.addEventListener('click', flipCards);
 })
+console.log('test' + openCards);
+
+//set up the event listener for restart button 
+// restartBtn.addEventListener('click', restartGame);
 
 
 /*
@@ -149,3 +195,4 @@ allCards.forEach(function(card){
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
+
