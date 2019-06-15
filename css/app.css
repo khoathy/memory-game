@@ -205,6 +205,10 @@ h6 {
     text-align: left;
 }
 
+.info-summary {
+    float: right;
+}
+
 .modal-replayBtn {
     display: block;
     margin : 1rem auto;

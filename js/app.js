@@ -28,22 +28,32 @@ let timer = 0;
 let interval = null;
 let matchedCounter = 0;
 let move = 0;
-let grade = 'great';
+let grade = 'Great';
 
 let deck = document.querySelector('.deck');
-const movesCount = document.querySelector('.moves');
 let clock = document.getElementById('clock');
+
+//for moveCounter
+const movesCount = document.querySelector('.moves');
 let moveStr = document.getElementById('move-number');
 let moveWord = document.getElementById('move-word');
-// let starList = document.getElementById('stars-list');
+
+//for star rating
+let starList = document.getElementById('stars-list');
 let stars = document.querySelectorAll('.star');
+
+//for congrats modal
 const restartBtn = document.getElementById('restart-btn');
 const congratsModal = document.getElementById('congrats');
 const closeModal = document.querySelector('.modal-close'); 
 const replayBtn = document.querySelector('.modal-replayBtn');
+let congratsTime = document.getElementById('congrats-time');
+let congratsStars = document.getElementById('congrats-stars'); 
+let congratsGrade = document.getElementById('congrats-grade');
   
+
 /*
- * Initialize and reset game
+ * Initialize game
  */
 
 function initGame() {
@@ -60,7 +70,7 @@ function initGame() {
     moveStr.innerText = "0";
     matchedCounter = 0;
     move = 0;
-    grade = 'great';
+    grade = 'Great';
     //set up event listener for btn
     restartBtn.addEventListener('click', resetGame);
     closeModal.addEventListener('click',hideModal);
@@ -294,15 +304,18 @@ function gameOver(){
     lockDeck = true;
     setTimeout(showModal,1500);
     console.log('game over');
+
 }
 
-//display, close the modal, replay btn
+// Display, close the modal, replay btn
 function showModal(){
     congratsModal.style.display = "flex";
+    summary();
 }
 
 function hideModal() {
     congratsModal.style.display = "none";
+    resetGame();
 }
 
 function replayGame() {
@@ -310,6 +323,12 @@ function replayGame() {
     resetGame();
 }
 
+// Game summary
+function summary(){
+    congratsTime.innerHTML = clock.innerHTML;
+    congratsStars.innerHTML = starList.innerHTML; 
+    congratsGrade.textContent = grade;
+}
 
 /*
  * Calling functions
