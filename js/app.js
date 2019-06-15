@@ -35,10 +35,12 @@ const movesCount = document.querySelector('.moves');
 let clock = document.getElementById('clock');
 let moveStr = document.getElementById('move-number');
 let moveWord = document.getElementById('move-word');
-let restartBtn = document.getElementById('restart-btn');
-let starList = document.getElementById('stars-list');
+// let starList = document.getElementById('stars-list');
 let stars = document.querySelectorAll('.star');
-
+const restartBtn = document.getElementById('restart-btn');
+const congratsModal = document.getElementById('congrats');
+const closeModal = document.querySelector('.modal-close'); 
+const replayBtn = document.querySelector('.modal-replayBtn');
   
 /*
  * Initialize and reset game
@@ -61,6 +63,8 @@ function initGame() {
     grade = 'great';
     //set up event listener for btn
     restartBtn.addEventListener('click', resetGame);
+    closeModal.addEventListener('click',hideModal);
+    replayBtn.addEventListener('click',replayGame);
 }
 
   
@@ -157,7 +161,7 @@ function checkMatch(){
         lockCards();
         matchedCounter +=2;
         console.log(matchedCounter);
-        if (matchedCounter == cardList.length/4) {
+        if (matchedCounter == cardList.length/8) {
             gameOver();
         }
     } else {
@@ -282,16 +286,29 @@ function resetGame() {
 }
 
 /*
- * Game Over and Congrats
+ * Congrats Modal when Game Over 
  */
 
 function gameOver(){
     stopTimer();
     lockDeck = true;
+    setTimeout(showModal,1500);
     console.log('game over');
 }
 
-//message with the final score 
+//display, close the modal, replay btn
+function showModal(){
+    congratsModal.style.display = "flex";
+}
+
+function hideModal() {
+    congratsModal.style.display = "none";
+}
+
+function replayGame() {
+    hideModal();
+    resetGame();
+}
 
 
 /*
