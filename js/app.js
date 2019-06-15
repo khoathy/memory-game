@@ -123,8 +123,6 @@ function updateGrade(){
         star[1].classList.add('star-removed')
         grade = "Poor";    
     }
-      
-    console.log(starList);
 }
 
 
@@ -142,7 +140,7 @@ function unflipCards(){
         secondCard.classList.remove('open','show'); 
     //prevent clicking while cards are still open
         lockDeck = false;  
-    }, 1000);   
+    }, 900);   
 }
 
 // lock the cards matched in the open position
@@ -154,8 +152,18 @@ function lockCards(){
 //check if cards match 
 function checkMatch(){
     let match = firstCard.dataset.card === secondCard.dataset.card;
-    console.log('match?' + match);
-    match ?  lockCards() : unflipCards();
+    // match ?  lockCards() : unflipCards();
+    if(match) {
+        lockCards();
+        setTimeout(() => {
+            firstCard.classList.add('match');
+            secondCard.classList.add('match');
+        }, 200)
+        // firstCard.classList.remove('open','show');    
+        // secondCard.classList.remove('open','show'); 
+    } else {
+        unflipCards();
+    } 
 }
 
 //reset first and second card 
