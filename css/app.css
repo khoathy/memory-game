@@ -148,7 +148,7 @@ h1 {
 .card.match {
     cursor: default;
     background: #3ae1d3;
-    animation: jelly 0.9s;
+    animation: jelly 0.9s 0.2s;
 }
 
 /* Animation */

@@ -18,9 +18,9 @@ let cardList = [
     'icofont-heart',
     'icofont-apple',
     'icofont-fire-truck'
-  ];
+];
 
-// Get DOM elements
+// Declare variables, get DOM elements
 let deck = document.querySelector('.deck');
 const movesCount = document.querySelector('.moves');
 let clock = document.getElementById('clock');
@@ -29,17 +29,45 @@ let moveWord = document.getElementById('move-word');
 let restartBtn = document.getElementById('restart-btn');
 let starList = document.getElementById('stars-list');
 let star = document.querySelectorAll('.star');
-
 let firstCard, secondCard;
-let matchedCards = [];
 let hasFlipped = false;
 let lockDeck = false;
 let timerStart = false;
 let timer = 0; 
+let interval = null;
+let matchedCounter = 0;
 let move = 0;
 let grade = 'great';
 
 
+function staging() {
+    deck.innerHTML = "";
+    displayCards();
+    activateCards();
+    hasFlipped = false;
+    lockDeck = false;
+    matchedCounter = 0;
+    timerStart = false;
+    timer = 0; 
+    interval = null;
+    clock.innerHTML = secondsToHms(timer);
+    matchedCounter = 0;
+    move = 0;
+    grade = 'great';
+}
+
+function initGame(){
+    staging();
+    //set up the event listener for restart button 
+    restartBtn.addEventListener('click', restartGame);
+}
+
+function restartGame() {
+    staging();
+    if (interval != null) {
+        clearInterval(interval);
+    }
+}
 
   
 /*
@@ -80,19 +108,6 @@ function displayCards(){
     });
 };
 
-
-/*
- * Game logics
- */
-
-// Game init
-    displayCards();
-    activateCards();
-// Game over
-    if(matchedCards.length == (cardList.length/2)) {
-        resetGame();
-    }
-
  // Flip and show the icon of the card
 function flipCards(){
     if (lockDeck) return;
@@ -100,7 +115,7 @@ function flipCards(){
     if (!timerStart) {
         timerStart = true;
         timer = 0; 
-        setInterval(myTimer,1000);
+        interval = setInterval(myTimer,1000);
     }    
     this.classList.add('open','show');
     if (!hasFlipped) {
@@ -173,8 +188,8 @@ function unflipCards(){
         firstCard.classList.remove('open','show');    
         secondCard.classList.remove('open','show'); 
     //prevent clicking while cards are still open
-        lockDeck = false;  
-        // resetFirstCard();
+        // lockDeck = false;  
+        resetFirstCard();
     }, 900);   
 }
 
@@ -182,27 +197,23 @@ function unflipCards(){
 function lockCards(){
     firstCard.removeEventListener('click',flipCards);
     secondCard.removeEventListener('click',flipCards);
-
-    // resetFirstCard();
+    resetFirstCard();
 }
 
 //check if cards match 
 function checkMatch(){
     let match = firstCard.dataset.card === secondCard.dataset.card;
-    if(match) {
+    if (match) {    
+        firstCard.classList.add('match');
+        secondCard.classList.add('match');  
+        //  firstCard.classList.remove('show','open');    
+        //  secondCard.classList.remove('show','open'); 
         lockCards();
-        setTimeout(() => {
-            firstCard.classList.add('match');
-            secondCard.classList.add('match');
-        }, 800)
-        // setTimeout(() => {
-        //     firstCard.classList.remove('show','open');    
-        //     secondCard.classList.remove('show','open'); 
-        // }, 1000)
-
-        matchedCards.push(firstCard);
-        matchedCards.push(secondCard);
-        
+        matchedCounter +=2;
+        console.log(matchedCounter);
+        if (matchedCounter == 2) {
+            gameOver();
+        }
     } else {
         unflipCards();
     } 
@@ -216,12 +227,9 @@ function resetFirstCard(){
     lockDeck = false;
 }
 
-function resetGame(){
-    deck.innerHTML = "";
-    displayCards();
-    activateCards();
-    hasFlipped = false;
-    lockDeck = false;
+function gameOver(){
+    clearInterval(interval);
+    console.log('game over');
 }
 
 //set up the event listener for a card if a card is clicked:
@@ -232,12 +240,9 @@ function activateCards(){
     })
 }
 
+initGame();
 
 
-console.log(matchedCards);
-
-//set up the event listener for restart button 
-restartBtn.addEventListener('click', resetGame);
 
 
 /*
