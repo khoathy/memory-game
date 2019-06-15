@@ -97,6 +97,8 @@ h6 {
     list-style: none;
     display: inline-block;
     color: #ffcd04;
+    text-align: left;
+    margin-left: -3px;
 }
 
 .star-removed {
@@ -166,6 +168,7 @@ h6 {
 
 
 /* Congrats Modal */
+
 .modal-congrats {
     display: none;
     z-index: 1;
@@ -183,7 +186,7 @@ h6 {
     position: relative;
     text-align: center;
     min-width: 50rem;
-    min-height: 40rem;
+    min-height: 30rem;
     border-radius: 1rem;
     background: rgb(243, 252, 255);
     padding: 4rem;
@@ -198,25 +201,32 @@ h6 {
 .congrats-info {
     padding: 0.5rem 2rem;
     display: inline-block;
-    margin: 0 auto;
+    margin: 2rem auto;
 }
 
 .congrats-item {
     text-align: left;
 }
 
-.info-summary {
-    float: right;
+.info {
+    display: inline-block;
+    min-width: 13rem;
 }
+
+.info-summary {
+    color: #09b7e7;
+}
+
+/* Modal Replay Button */
 
 .modal-replayBtn {
     display: block;
     margin : 1rem auto;
     padding: 1rem 2rem;
     min-width: 4rem;
-    border-radius: 0.5rem;
+    border-radius: 2rem;
     border: none;
-    background-color: #19c7f7;
+    background-color: #09b7e7;
     color: #fff;
     font-size: 1.6rem;
     text-transform: uppercase;
@@ -228,14 +238,14 @@ h6 {
 }
 
 
-/* The Close Button */
+/* Modal Close Button */
 
 .modal-close {
     position: absolute;
-    right: 2rem;
-    top: 2rem;
+    right: 3rem;
+    top: 1rem;
     z-index: 2;
-    font-size: 3rem;
+    font-size: 4rem;
     color: #2abbb9;
     transition : ease-in 0.1s;
 }
