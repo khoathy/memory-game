@@ -85,9 +85,13 @@ function displayCards(){
  * Game logics
  */
 
- // Game init
+// Game init
     displayCards();
-    
+    activateCards();
+// Game over
+    if(matchedCards.length == (cardList.length/2)) {
+        resetGame();
+    }
 
  // Flip and show the icon of the card
 function flipCards(){
@@ -99,7 +103,6 @@ function flipCards(){
         setInterval(myTimer,1000);
     }    
     this.classList.add('open','show');
-    matchedCards.push(this);
     if (!hasFlipped) {
         hasFlipped = true;
         firstCard = this;
@@ -138,6 +141,8 @@ function updateGrade(){
 // 13-18 Moves = Average 
 // 26+ Moves = Poor...  
 
+
+//start timer
 function secondsToHms(time) {
     time = Number(time);
     let h = Math.floor(time / 3600);
@@ -160,6 +165,7 @@ function myTimer() {
 }
 
 
+//open cards
 function unflipCards(){
     lockDeck = true;
     console.log(lockDeck + 'when unflip');
@@ -168,6 +174,7 @@ function unflipCards(){
         secondCard.classList.remove('open','show'); 
     //prevent clicking while cards are still open
         lockDeck = false;  
+        // resetFirstCard();
     }, 900);   
 }
 
@@ -175,6 +182,8 @@ function unflipCards(){
 function lockCards(){
     firstCard.removeEventListener('click',flipCards);
     secondCard.removeEventListener('click',flipCards);
+
+    // resetFirstCard();
 }
 
 //check if cards match 
@@ -190,35 +199,45 @@ function checkMatch(){
         //     firstCard.classList.remove('show','open');    
         //     secondCard.classList.remove('show','open'); 
         // }, 1000)
+
+        matchedCards.push(firstCard);
+        matchedCards.push(secondCard);
+        
     } else {
         unflipCards();
     } 
 }
 
 //reset first and second card 
-// function resetFirstCard(){
-//     firstCard = null;
-//     secondCard = null;
-//     hasFlipped = false;
-//     lockDeck = false;
-// }
+function resetFirstCard(){
+    firstCard = null;
+    secondCard = null;
+    hasFlipped = false;
+    lockDeck = false;
+}
 
-// function restartGame(){
-//     deck.innerHTML = "";
-//     displayCards();
-//     hasFlipped = false;
-//     lockDeck = false;
-//     console.log(hasFlipped,lockDeck,matchedCards);
-// }
+function resetGame(){
+    deck.innerHTML = "";
+    displayCards();
+    activateCards();
+    hasFlipped = false;
+    lockDeck = false;
+}
 
 //set up the event listener for a card if a card is clicked:
-let allCards = document.querySelectorAll('.card');
-allCards.forEach(function(card){
-    card.addEventListener('click', flipCards);
-})
+function activateCards(){
+    let allCards = document.querySelectorAll('.card');
+    allCards.forEach(function(card){
+        card.addEventListener('click', flipCards);
+    })
+}
+
+
+
+console.log(matchedCards);
 
 //set up the event listener for restart button 
-// restartBtn.addEventListener('click', restartGame);
+restartBtn.addEventListener('click', resetGame);
 
 
 /*
