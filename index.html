@@ -33,15 +33,16 @@
         <!-- The Modal -->
         <div id="congrats" class="modal-congrats">
             <div class="modal-content">
-                <span class="trophy">🏆</span>
                 <span class="modal-close">&times;</span>
+                <img class="congrats-svg" src="img/congrats.svg" alt="confetti">
                 <h3>Congratulations!</h3>
-                <ul class= "">You've finished the game!
-                    <li>Your total time :<span class = "congrats-time"></span></li>
-                    <li>Your star rating: <span class = "congrats-stars"></span></li>
-                    <li>Your grade: <span class = "congrats-grade"></span></li>
+                <h6>You've finished the game!</h6>
+                <ul class= "congrats-info"> 
+                    <li class="congrats-item">Your total time :<span id="congrats-time"></span></li>
+                    <li class="congrats-item">Your star rating: <span id="congrats-stars"></span></li>
+                    <li class="congrats-item">Your grade: <span id="congrats-grade"></span></li>
                 </ul>
-                <button type="button" class="modal-replay">Replay!</button>
+                <button type="button" class="modal-replayBtn">Replay!</button>
             </div>
         </div>
         <ul class="deck">
