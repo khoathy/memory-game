@@ -128,12 +128,11 @@ h1 {
     transform-style: preserve-3d;
     transform: rotateY(0);
     transition: font-size 0.1s, transform 0.6s cubic-bezier(0,.78,.37,1.21), background 0.4s;
-    
 }
 
-.card i {
+/* .card i {
     transform: rotateY(180deg);
-}
+} */
 
 .card.open {
     transform: rotateY(180deg);
@@ -149,8 +148,7 @@ h1 {
 .card.match {
     cursor: default;
     background: #3ae1d3;
-    animation: jelly 0.8s 0.2s;
-    font-size: 6rem;
+    animation: jelly 0.9s;
 }
 
 /* Animation */

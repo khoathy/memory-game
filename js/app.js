@@ -23,18 +23,22 @@ let cardList = [
 // Get DOM elements
 let deck = document.querySelector('.deck');
 const movesCount = document.querySelector('.moves');
-const timer = document.querySelector('.timer');
-let openCards = [];
-let firstCard, secondCard;
-let hasFlipped = false;
-let lockDeck = false;
+let clock = document.getElementById('clock');
 let moveStr = document.getElementById('move-number');
 let moveWord = document.getElementById('move-word');
 let restartBtn = document.getElementById('restart-btn');
 let starList = document.getElementById('stars-list');
 let star = document.querySelectorAll('.star');
+
+let firstCard, secondCard;
+let matchedCards = [];
+let hasFlipped = false;
+let lockDeck = false;
+let timerStart = false;
+let timer = 0; 
 let move = 0;
 let grade = 'great';
+
 
 
   
@@ -89,8 +93,13 @@ function displayCards(){
 function flipCards(){
     if (lockDeck) return;
     if (this === firstCard) return;
+    if (!timerStart) {
+        timerStart = true;
+        timer = 0; 
+        setInterval(myTimer,1000);
+    }    
     this.classList.add('open','show');
-    openCards.push(this);
+    matchedCards.push(this);
     if (!hasFlipped) {
         hasFlipped = true;
         firstCard = this;
@@ -125,11 +134,30 @@ function updateGrade(){
     }
 }
 
-
 // 0-10 Moves = Great! 
 // 13-18 Moves = Average 
 // 26+ Moves = Poor...  
 
+function secondsToHms(time) {
+    time = Number(time);
+    let h = Math.floor(time / 3600);
+    let m = Math.floor((time % 3600) / 60);
+    let s = Math.floor((time % 3600) % 60);
+    return '' + getTwoDigits(h) + ':' + getTwoDigits(m) + ':' + getTwoDigits(s);
+}
+
+function getTwoDigits(s) {
+    if (s < 10) {
+        return '0' + s;
+    } else {
+        return '' + s;
+    }
+}
+
+function myTimer() {
+    clock.innerHTML = secondsToHms(timer);
+    timer += 1;
+}
 
 
 function unflipCards(){
@@ -152,15 +180,16 @@ function lockCards(){
 //check if cards match 
 function checkMatch(){
     let match = firstCard.dataset.card === secondCard.dataset.card;
-    // match ?  lockCards() : unflipCards();
     if(match) {
         lockCards();
         setTimeout(() => {
             firstCard.classList.add('match');
             secondCard.classList.add('match');
-        }, 200)
-        // firstCard.classList.remove('open','show');    
-        // secondCard.classList.remove('open','show'); 
+        }, 800)
+        // setTimeout(() => {
+        //     firstCard.classList.remove('show','open');    
+        //     secondCard.classList.remove('show','open'); 
+        // }, 1000)
     } else {
         unflipCards();
     } 
@@ -179,7 +208,7 @@ function checkMatch(){
 //     displayCards();
 //     hasFlipped = false;
 //     lockDeck = false;
-//     console.log(hasFlipped,lockDeck,openCards);
+//     console.log(hasFlipped,lockDeck,matchedCards);
 // }
 
 //set up the event listener for a card if a card is clicked:
@@ -187,7 +216,6 @@ let allCards = document.querySelectorAll('.card');
 allCards.forEach(function(card){
     card.addEventListener('click', flipCards);
 })
-console.log('test' + openCards);
 
 //set up the event listener for restart button 
 // restartBtn.addEventListener('click', restartGame);
