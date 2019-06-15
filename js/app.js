@@ -296,15 +296,21 @@ function resetGame() {
 }
 
 /*
- * Congrats Modal when Game Over 
+ * Congrats Sound and popup Modal when Game Over 
  */
 
 function gameOver(){
     stopTimer();
     lockDeck = true;
-    setTimeout(showModal,1500);
+    setTimeout(winningSound,700);
+    setTimeout(showModal,1600);
     console.log('game over');
+}
 
+// Winning sound when all cards are matched
+function winningSound(){
+    var audio = new Audio("sound/congrats.mp3");
+    audio.play();
 }
 
 // Display, close the modal, replay btn
