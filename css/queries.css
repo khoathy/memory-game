@@ -24,6 +24,7 @@
 
 	.info-panel {
 		width: 95%;
+		min-width: 30rem;
 		margin-bottom: 1rem;
 	}
 
@@ -52,9 +53,15 @@
     	font-size: 5rem;
 	}
 	
+	.modal-content {
+		min-width: 30rem;
+		min-height: 20rem;
+	}
 
-	
-}
+	.modal-close {
+		position: absolute;
+		top: 1rem;
+	}
 
 /*Small Phones max-width: 480px */
 @media screen and (max-width: 30em) {
