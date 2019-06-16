@@ -156,7 +156,7 @@ function unflipCards(){
         firstCard.classList.remove('open','show');    
         secondCard.classList.remove('open','show'); 
         resetFirstCard(); 
-    }, 1200);   
+    }, 1100);   
 }
 
 // Check if cards are matched 
@@ -294,7 +294,7 @@ function gameOver(){
     stopTimer();
     lockDeck = true;
     setTimeout(winningSound,700);
-    setTimeout(showModal,1500);
+    setTimeout(showModal,1100);
 }
 
 // Winning sound when all cards are matched

@@ -151,8 +151,8 @@ h6 {
     -webkit-box-flex: 1;
         -ms-flex-positive: 1;
             flex-grow: 1;
-    -webkit-perspective: 400rem;
-            perspective: 400rem;
+    -webkit-perspective: 350rem;
+            perspective: 350rem;
 }
 
 .card {
@@ -186,8 +186,8 @@ h6 {
             transform-style: preserve-3d;
     background: #22cfff;
     cursor: default;
-    -webkit-animation: flip 0.8s ease-in-out;
-            animation: flip 0.8s ease-in-out;
+    -webkit-animation: flip 0.6s ease-in;
+            animation: flip 0.6s ease-in;
 }
 
 .card.show,
@@ -198,8 +198,8 @@ h6 {
 .card.match {
     cursor: default;
     background: #3ae1d3;
-    -webkit-animation: jelly 0.5s 0.2s;
-            animation: jelly 0.5s 0.2s;
+    -webkit-animation: jelly 0.6s 0.2s;
+            animation: jelly 0.6s 0.2s;
 }
 
 
@@ -313,11 +313,11 @@ h6 {
 	40% {
         -webkit-transform: rotateY(-15deg);
                 transform: rotateY(-15deg);
-		opacity: 1;
 	}
 	60% {
 		-webkit-transform: rotateY(10deg);
-		        transform: rotateY(10deg);
+                transform: rotateY(10deg);
+		opacity: 1;
 	}
 	80% {
 		-webkit-transform: rotateY(-5deg);
