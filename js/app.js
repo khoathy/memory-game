@@ -1,6 +1,6 @@
 /* Variable declarations and get DOM elements */
 
-// For congrats modal
+// For Congrats modal
 const restartBtn = document.getElementById('restart-btn');
 const congratsModal = document.getElementById('congrats');
 const closeModal = document.querySelector('.modal-close'); 
@@ -9,7 +9,7 @@ const congratsTime = document.getElementById('congrats-time');
 const congratsStars = document.getElementById('congrats-stars'); 
 const congratsGrade = document.getElementById('congrats-grade');
   
-// For score panel
+// For Score panel
 const deck = document.querySelector('.deck');
 const clock = document.getElementById('clock');
 
@@ -148,14 +148,14 @@ function flipCards(){
 
 // Unflip cards that are not matched 
 function unflipCards(){
-    //prevents clicking while cards are still open
+    // Prevents clicking while cards are still open
     lockDeck = true;
-    //unflip the card and hide the card's symbol 
+    // Unflip the card and hide the card's symbol 
     setTimeout(() => {
         firstCard.classList.remove('open','show');    
         secondCard.classList.remove('open','show'); 
         resetFirstCard(); 
-    }, 900);   
+    }, 1200);   
 }
 
 // Check if cards are matched 
