@@ -70,7 +70,7 @@
 	.congrats-info {
 		margin: 0;
 	}
-	
+}	
 
 /*Small Phones max-width: 480px */
 @media screen and (max-width: 30em) {
@@ -88,7 +88,5 @@
 
 	.deck {
 		padding: 4rem 10%;
-	}
-
-	
+	}	
 }
