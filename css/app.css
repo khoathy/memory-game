@@ -63,6 +63,7 @@ h3 {
     font-size: 2.4rem;
     font-weight: bold;
     margin-bottom: 1rem;
+    color: #00a0da;
 }
 
 h6 {
@@ -122,7 +123,7 @@ h6 {
 .deck {
     height: 100%;
     width: 100%;
-    background: linear-gradient(165deg, #27c1cc 20%, #7f7bd7 100%);
+    background: linear-gradient(165deg, #47cbcd 20%, #7f7bd7 100%);
     padding: 3rem 5%;
     display: flex;
     flex-wrap: wrap;
@@ -136,7 +137,7 @@ h6 {
     height: 15rem;
     width: 15rem;
     margin: 1rem 2rem;
-    background: linear-gradient(135deg, #d5f5fa 0%, #e7fbff 65%, #1ac7f7 65%,  #1ac7f7 79%,#46f0ed 80%, #35eedf 82%, #96a1ff 82%, #9ca6ff 100%);
+    background: linear-gradient(135deg, #d5f5fa 0%, #e7fbff 65%, #20ccfc 65%, #1ac7f7 75%,#43f1f4 76%, #43f1f4 82%, #96a1ff 83%, #9ca6ff 100%);
     color: #fff;
     font-size: 0;
     border-radius: 8px;
@@ -147,6 +148,7 @@ h6 {
     box-shadow: 4px 2px 1rem 0 rgba(37, 89, 131, 0.4);
     transform-style: preserve-3d;
     transform: rotateY(0);
+    animation: flip 0.5s;
     transition: font-size 0.1s, transform 0.6s cubic-bezier(0,.78,.37,1.21), background 0.4s;
 }
 
@@ -156,7 +158,7 @@ h6 {
 
 .card.open {
     transform: rotateY(180deg);
-    background: #19c7f7;
+    background: #22cfff;
     cursor: default;
 }
 
@@ -169,6 +171,7 @@ h6 {
     cursor: default;
     background: #3ae1d3;
     animation: jelly 0.5s 0.2s;
+    transform: rotateY(180deg);
 }
 
 
@@ -251,13 +254,13 @@ h6 {
     top: 1rem;
     z-index: 2;
     font-size: 4rem;
-    color: #2abbb9;
+    color: #06ddc8;
     transition : ease-in 0.1s;
 }
 
 .modal-close:hover,
 .modal-close:focus {
-    color: #06dda4;
+    color: #2abbb9;
     text-decoration: none;
     cursor: pointer;
     transform: scale(1.2);
@@ -304,14 +307,3 @@ h6 {
     }
 }
 
-/* @keyframes shake {
-    0%, 100% {
-    transform: translate3d(0, 0, 0);
-    }
-    10%, 30%, 70% {
-    transform: translate3d(-1rem, 0, 0);
-    }
-    20%, 40%, 80% {
-    transform: translate3d(1rem, 0, 0);
-    }
-} */

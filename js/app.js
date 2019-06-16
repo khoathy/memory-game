@@ -1,6 +1,25 @@
 /* Variable declarations and get DOM elements */
 
-// Create a list that holds all of the cards 
+// For congrats modal
+const restartBtn = document.getElementById('restart-btn');
+const congratsModal = document.getElementById('congrats');
+const closeModal = document.querySelector('.modal-close'); 
+const replayBtn = document.querySelector('.modal-replayBtn');
+const congratsTime = document.getElementById('congrats-time');
+const congratsStars = document.getElementById('congrats-stars'); 
+const congratsGrade = document.getElementById('congrats-grade');
+  
+// For score panel
+const deck = document.querySelector('.deck');
+const clock = document.getElementById('clock');
+
+const moveStr = document.getElementById('move-number');
+const moveWord = document.getElementById('move-word');
+
+const starList = document.getElementById('stars-list');
+const stars = document.querySelectorAll('.star');
+
+// List that holds all cards 
 let cardList = [
     'icofont-fish-5',
     'icofont-cherry',
@@ -30,24 +49,6 @@ let matchedCounter = 0;
 let move = 0;
 let grade = 'Great';
 
-//for congrats modal
-const restartBtn = document.getElementById('restart-btn');
-const congratsModal = document.getElementById('congrats');
-const closeModal = document.querySelector('.modal-close'); 
-const replayBtn = document.querySelector('.modal-replayBtn');
-let congratsTime = document.getElementById('congrats-time');
-let congratsStars = document.getElementById('congrats-stars'); 
-let congratsGrade = document.getElementById('congrats-grade');
-  
-//for score panel
-let deck = document.querySelector('.deck');
-let clock = document.getElementById('clock');
-
-let moveStr = document.getElementById('move-number');
-let moveWord = document.getElementById('move-word');
-
-let starList = document.getElementById('stars-list');
-let stars = document.querySelectorAll('.star');
 
 /*
  * Initialize game
@@ -68,7 +69,7 @@ function initGame() {
     matchedCounter = 0;
     move = 0;
     grade = 'Great';
-    //set up event listener for btn
+    //set up event listener for buttons
     restartBtn.addEventListener('click', resetGame);
     closeModal.addEventListener('click',hideModal);
     replayBtn.addEventListener('click',replayGame);
@@ -99,13 +100,14 @@ function createCard(cardName){
     liElm.classList.add('card');
     liElm.setAttribute('data-card',cardName);
     deck.appendChild(liElm);
+
     //create i element 
     let icon = document.createElement('i');
     icon.classList.add(cardName);
     liElm.appendChild(icon);
 }
 
-//Display random cards on the page
+// Display random cards on the page
 function displayCards(){
     shuffle(cardList);
     cardList.forEach(function(cardName){
@@ -138,7 +140,6 @@ function flipCards(){
     } else {
         hasFlipped = false;
         secondCard = this;  
-        // lockDeck = true;
         checkMatch();
         updateMoves();
         updateGrade();
@@ -163,12 +164,12 @@ function checkMatch(){
     if (match) {    
         firstCard.classList.add('match');
         secondCard.classList.add('match');  
-        //  firstCard.classList.remove('show','open');    
-        //  secondCard.classList.remove('show','open'); 
+        firstCard.classList.remove('show','open');    
+        secondCard.classList.remove('show','open'); 
         lockCards();
         matchedCounter +=2;
         console.log(matchedCounter);
-        if (matchedCounter == cardList.length/8) {
+        if (matchedCounter == cardList.length) {
             gameOver();
         }
     } else {
@@ -212,15 +213,15 @@ function updateMoves(){
  */
 
 function updateGrade(){
-    if (move < 2) {
+    if (move < 12) {
         grade = "Great";  
     }
-    if (move >= 2) {
+    if (move >= 12) {
         stars[2].classList.add('star-removed');
         grade = "Average";  
     }
-    if (move >= 3) {
-        stars[1].classList.add('star-removed')
+    if (move >= 24) {
+        stars[1].classList.add('star-removed');
         grade = "Poor";    
     }
 }
@@ -232,10 +233,6 @@ function resetStars(){
         }
     })
 }
-
-// 0-10 Moves = Great! 
-// 13-18 Moves = Average 
-// 26+ Moves = Poor...  
 
 
 /*
@@ -252,11 +249,7 @@ function secondsToHms(time) {
 }
 
 function getTwoDigits(s) {
-    if (s < 10) {
-        return '0' + s;
-    } else {
-        return '' + s;
-    }
+    return (s < 10) ? '0' + s : '' + s;
 }
 
 // Display current timer on page
@@ -287,8 +280,8 @@ function stopTimer() {
  */
 
 function resetGame() {
-    initGame();
     stopTimer();
+    initGame();
     resetStars();
 }
 
