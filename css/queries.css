@@ -76,8 +76,9 @@
 /*Small Phones max-width: 480px */
 @media screen and (max-width: 30em) {
 	.card {
-		height: 6.5rem;
+		height: 7rem;
 		width: 8rem;
+		margin: 0.8rem;
 	}
 }
 
