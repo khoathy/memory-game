@@ -66,6 +66,7 @@ function initGame() {
     interval = null;
     clock.innerHTML = secondsToHms(timer);
     moveStr.innerText = "0";
+    moveWord.innerText = " Moves";
     matchedCounter = 0;
     move = 0;
     grade = 'Great';
@@ -213,10 +214,10 @@ function updateMoves(){
  */
 
 function updateGrade(){
-    if (move < 12) {
+    if (move < 13) {
         grade = "Great";  
     }
-    if (move >= 12) {
+    if (move >= 13) {
         stars[2].classList.add('star-removed');
         grade = "Average";  
     }
@@ -292,8 +293,8 @@ function resetGame() {
 function gameOver(){
     stopTimer();
     lockDeck = true;
-    setTimeout(winningSound,500);
-    setTimeout(showModal,1800);
+    setTimeout(winningSound,700);
+    setTimeout(showModal,1500);
 }
 
 // Winning sound when all cards are matched
@@ -330,4 +331,3 @@ function summary(){
  */
 
 initGame();
-
