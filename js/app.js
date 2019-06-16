@@ -255,8 +255,8 @@ function getTwoDigits(s) {
 
 // Display current timer on page
 function myTimer() {
-    clock.innerHTML = secondsToHms(timer);
     timer += 1;
+    clock.innerHTML = secondsToHms(timer);
 }
 
 // Start timer when game starts
