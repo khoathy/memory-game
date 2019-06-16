@@ -56,7 +56,7 @@ h1 {
     font-size: 3.2rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    color: #02a99b;
+    color: #00a0da;
 }
 
 h3 {
@@ -109,6 +109,11 @@ h6 {
 .restart {
     float: right;
     cursor: pointer;
+    color: #00a0da;
+}
+
+.restart:hover {
+    color: #14e0f7;
 }
 
 
@@ -117,7 +122,7 @@ h6 {
 .deck {
     height: 100%;
     width: 100%;
-    background: linear-gradient(165deg, #33b9c2 20%, #7f7bd7 100%);
+    background: linear-gradient(165deg, #27c1cc 20%, #7f7bd7 100%);
     padding: 3rem 5%;
     display: flex;
     flex-wrap: wrap;
@@ -131,7 +136,7 @@ h6 {
     height: 15rem;
     width: 15rem;
     margin: 1rem 2rem;
-    background: linear-gradient(135deg, #35eedf 0%, #35eedf 60%,#19c7f7 60%, #19c7f7 85%, #9490ed 85%, #9490ed 100%);
+    background: linear-gradient(135deg, #d5f5fa 0%, #e7fbff 65%, #1ac7f7 65%,  #1ac7f7 79%,#46f0ed 80%, #35eedf 82%, #96a1ff 82%, #9ca6ff 100%);
     color: #fff;
     font-size: 0;
     border-radius: 8px;
@@ -163,7 +168,7 @@ h6 {
 .card.match {
     cursor: default;
     background: #3ae1d3;
-    animation: jelly 0.9s 0.2s;
+    animation: jelly 0.5s 0.2s;
 }
 
 
@@ -222,7 +227,7 @@ h6 {
 .modal-replayBtn {
     display: block;
     margin : 1rem auto;
-    padding: 1rem 2rem;
+    padding: 1rem 3rem;
     min-width: 4rem;
     border-radius: 2rem;
     border: none;

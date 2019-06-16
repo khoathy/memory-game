@@ -24,23 +24,11 @@ let firstCard, secondCard;
 let hasFlipped = false;
 let lockDeck = false;
 let timerStart = false;
-let timer = 0; 
 let interval = null;
+let timer = 0; 
 let matchedCounter = 0;
 let move = 0;
 let grade = 'Great';
-
-let deck = document.querySelector('.deck');
-let clock = document.getElementById('clock');
-
-//for moveCounter
-const movesCount = document.querySelector('.moves');
-let moveStr = document.getElementById('move-number');
-let moveWord = document.getElementById('move-word');
-
-//for star rating
-let starList = document.getElementById('stars-list');
-let stars = document.querySelectorAll('.star');
 
 //for congrats modal
 const restartBtn = document.getElementById('restart-btn');
@@ -51,6 +39,15 @@ let congratsTime = document.getElementById('congrats-time');
 let congratsStars = document.getElementById('congrats-stars'); 
 let congratsGrade = document.getElementById('congrats-grade');
   
+//for score panel
+let deck = document.querySelector('.deck');
+let clock = document.getElementById('clock');
+
+let moveStr = document.getElementById('move-number');
+let moveWord = document.getElementById('move-word');
+
+let starList = document.getElementById('stars-list');
+let stars = document.querySelectorAll('.star');
 
 /*
  * Initialize game
@@ -100,13 +97,13 @@ function createCard(cardName){
     //create li element 
     let liElm = document.createElement('li');
     liElm.classList.add('card');
-    liElm.setAttribute('data-card',cardName)
+    liElm.setAttribute('data-card',cardName);
     deck.appendChild(liElm);
     //create i element 
     let icon = document.createElement('i');
     icon.classList.add(cardName);
     liElm.appendChild(icon);
-};
+}
 
 //Display random cards on the page
 function displayCards(){
@@ -114,7 +111,7 @@ function displayCards(){
     cardList.forEach(function(cardName){
         createCard(cardName);
     });
-};
+}
 
 
 /*
@@ -302,9 +299,8 @@ function resetGame() {
 function gameOver(){
     stopTimer();
     lockDeck = true;
-    setTimeout(winningSound,700);
-    setTimeout(showModal,1600);
-    console.log('game over');
+    setTimeout(winningSound,500);
+    setTimeout(showModal,1800);
 }
 
 // Winning sound when all cards are matched
