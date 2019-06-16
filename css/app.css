@@ -1,5 +1,6 @@
 html {
-    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
 }
 
 * {
@@ -10,7 +11,8 @@ html {
 *,
 *::before,
 *::after {
-    box-sizing: inherit;
+    -webkit-box-sizing: inherit;
+            box-sizing: inherit;
 }
 
 html,
@@ -20,7 +22,8 @@ body {
 }
 
 html {
-    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
 	font-size: 62.5%;
 }
 
@@ -36,10 +39,19 @@ body {
 }
 
 .container {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     width: 100vw;
     min-height: 100vh;
 }
@@ -125,12 +137,21 @@ h6 {
     width: 100%;
     background: linear-gradient(165deg, #47cbcd 20%, #7f7bd7 100%);
     padding: 3rem 5%;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-content: space-around;
-    flex-grow: 1;
-    perspective: 400rem;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -ms-flex-line-pack: distribute;
+        align-content: space-around;
+    -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
+    -webkit-perspective: 400rem;
+            perspective: 400rem;
 }
 
 .card {
@@ -142,19 +163,30 @@ h6 {
     font-size: 0;
     border-radius: 8px;
     cursor: pointer;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 4px 2px 1rem 0 rgba(37, 89, 131, 0.4);
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-shadow: 4px 2px 1rem 0 rgba(37, 89, 131, 0.4);
+            box-shadow: 4px 2px 1rem 0 rgba(37, 89, 131, 0.4);
+    -webkit-transition: font-size 0.3s cubic-bezier(0,.78,.37,1.21);
     transition: font-size 0.3s cubic-bezier(0,.78,.37,1.21); 
 }
 
 .card.open {
-    transform: rotateY(0);
-    transform-style: preserve-3d;
+    -webkit-transform: rotateY(0);
+            transform: rotateY(0);
+    -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
     background: #22cfff;
     cursor: default;
-    animation: flip 0.8s ease-in-out;
+    -webkit-animation: flip 0.8s ease-in-out;
+            animation: flip 0.8s ease-in-out;
 }
 
 .card.show,
@@ -165,7 +197,8 @@ h6 {
 .card.match {
     cursor: default;
     background: #3ae1d3;
-    animation: jelly 0.5s 0.2s;
+    -webkit-animation: jelly 0.5s 0.2s;
+            animation: jelly 0.5s 0.2s;
 }
 
 
@@ -180,8 +213,12 @@ h6 {
     width: 100%;
     height: 100%;
     background-color: rgba(0,0,0,0.2);
-    justify-content: center;
-    align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
 }
 
 .modal-content {
@@ -192,7 +229,8 @@ h6 {
     border-radius: 1rem;
     background: #f3fcff;
     padding: 4rem;
-    animation: bounceIn 0.6s cubic-bezier(0.21, 0.61, 0.35, 1);
+    -webkit-animation: bounceIn 0.6s cubic-bezier(0.21, 0.61, 0.35, 1);
+            animation: bounceIn 0.6s cubic-bezier(0.21, 0.61, 0.35, 1);
 }
 
 .congrats-svg {
@@ -250,6 +288,7 @@ h6 {
     z-index: 2;
     font-size: 4rem;
     color: #06ddc8;
+    -webkit-transition : ease-in 0.1s;
     transition : ease-in 0.1s;
 }
 
@@ -258,68 +297,156 @@ h6 {
     color: #2abbb9;
     text-decoration: none;
     cursor: pointer;
-    transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
 }
 
 /* Animation */
 
-@keyframes flip {
+@-webkit-keyframes flip {
 	0% {
-		transform: rotateY(90deg);
+		-webkit-transform: rotateY(90deg);
+		        transform: rotateY(90deg);
 		opacity: 0;
 	}
 	40% {
-        transform: rotateY(-15deg);
+        -webkit-transform: rotateY(-15deg);
+                transform: rotateY(-15deg);
 		opacity: 1;
 	}
 	60% {
-		transform: rotateY(10deg);
+		-webkit-transform: rotateY(10deg);
+		        transform: rotateY(10deg);
 	}
 	80% {
-		transform: rotateY(-5deg);
+		-webkit-transform: rotateY(-5deg);
+		        transform: rotateY(-5deg);
     }
     100% {
-		transform: rotateY(0deg);
+		-webkit-transform: rotateY(0deg);
+		        transform: rotateY(0deg);
 	}
+}
+
+@keyframes flip {
+	0% {
+		-webkit-transform: rotateY(90deg);
+		        transform: rotateY(90deg);
+		opacity: 0;
+	}
+	40% {
+        -webkit-transform: rotateY(-15deg);
+                transform: rotateY(-15deg);
+		opacity: 1;
+	}
+	60% {
+		-webkit-transform: rotateY(10deg);
+		        transform: rotateY(10deg);
+	}
+	80% {
+		-webkit-transform: rotateY(-5deg);
+		        transform: rotateY(-5deg);
+    }
+    100% {
+		-webkit-transform: rotateY(0deg);
+		        transform: rotateY(0deg);
+	}
+}
+
+@-webkit-keyframes jelly {
+    0%, 100% {
+      -webkit-transform: scale3d(1, 1, 1);
+              transform: scale3d(1, 1, 1);
+    }
+    30% {
+      -webkit-transform: scale3d(1.05, 0.9, 1);
+              transform: scale3d(1.05, 0.9, 1);
+    }
+    40% {
+      -webkit-transform: scale3d(0.9, 1.05, 1);
+              transform: scale3d(0.9, 1.05, 1);
+    }
 }
 
 @keyframes jelly {
     0%, 100% {
-      transform: scale3d(1, 1, 1);
+      -webkit-transform: scale3d(1, 1, 1);
+              transform: scale3d(1, 1, 1);
     }
     30% {
-      transform: scale3d(1.05, 0.9, 1);
+      -webkit-transform: scale3d(1.05, 0.9, 1);
+              transform: scale3d(1.05, 0.9, 1);
     }
     40% {
-      transform: scale3d(0.9, 1.05, 1);
+      -webkit-transform: scale3d(0.9, 1.05, 1);
+              transform: scale3d(0.9, 1.05, 1);
+    }
+}
+ 
+@-webkit-keyframes bounceIn {
+    0%, 10% {
+        opacity: 0;
+        -webkit-transform: scale3d(0, 0, 0);
+                transform: scale3d(0, 0, 0);
+    }
+    20% {
+        -webkit-transform: scale3d(.5, .5, .5);
+                transform: scale3d(.5, .5, .5);
+    }
+    30% {
+        -webkit-transform: scale3d(1.1, 1.1, 1.1);
+                transform: scale3d(1.1, 1.1, 1.1);
+    }
+    50% {
+        opacity: 1;
+        -webkit-transform: scale3d(.9, .9, .9);
+                transform: scale3d(.9, .9, .9);
+    }
+    70% {
+        -webkit-transform: scale3d(1.03, 1.03, 1.03);
+                transform: scale3d(1.03, 1.03, 1.03);
+    }
+    90% {
+        -webkit-transform: scale3d(.97, .97, .97);
+                transform: scale3d(.97, .97, .97);
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: scale3d(1, 1, 1);
+                transform: scale3d(1, 1, 1);
     }
 }
  
 @keyframes bounceIn {
     0%, 10% {
         opacity: 0;
-        transform: scale3d(0, 0, 0);
+        -webkit-transform: scale3d(0, 0, 0);
+                transform: scale3d(0, 0, 0);
     }
     20% {
-        transform: scale3d(.5, .5, .5);
+        -webkit-transform: scale3d(.5, .5, .5);
+                transform: scale3d(.5, .5, .5);
     }
     30% {
-        transform: scale3d(1.1, 1.1, 1.1);
+        -webkit-transform: scale3d(1.1, 1.1, 1.1);
+                transform: scale3d(1.1, 1.1, 1.1);
     }
     50% {
         opacity: 1;
-        transform: scale3d(.9, .9, .9);
+        -webkit-transform: scale3d(.9, .9, .9);
+                transform: scale3d(.9, .9, .9);
     }
     70% {
-        transform: scale3d(1.03, 1.03, 1.03);
+        -webkit-transform: scale3d(1.03, 1.03, 1.03);
+                transform: scale3d(1.03, 1.03, 1.03);
     }
     90% {
-        transform: scale3d(.97, .97, .97);
+        -webkit-transform: scale3d(.97, .97, .97);
+                transform: scale3d(.97, .97, .97);
     }
     100% {
         opacity: 1;
-        transform: scale3d(1, 1, 1);
+        -webkit-transform: scale3d(1, 1, 1);
+                transform: scale3d(1, 1, 1);
     }
 }
-
-
