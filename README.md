@@ -32,6 +32,7 @@ The app was styled and developed using HTML, CSS, and Vanilla Javascript.
 - Clone or download this Memory Game repo.
 - Extract and open the folder.
 - Open the file `index.html` with your favorite browser.
+- The game has some sound effects, so please turn on your speaker if you're interested.
 - Enjoy this fun game and improve not only your mood but also your memory!
 
 
